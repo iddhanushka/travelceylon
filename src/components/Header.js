@@ -1,6 +1,9 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 
+//components
+import Login from '../screens/Login';
+
 export default function Header() {
   return (
     <View style={styles.main}>
