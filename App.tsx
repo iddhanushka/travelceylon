@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -31,9 +31,11 @@ import {
 // components
 import Header from './src/components/Header';
 import Home from './src/screens/Home';
+import Login from './src/screens/Login';
 import Destinations from './src/screens/Destinations';
 import About from './src/screens/About';
 import Contact from './src/screens/Contact';
+import CreateArticle from './src/screens/PostCreate';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -47,7 +49,7 @@ function App(): React.JSX.Element {
   };
 
   const Tab = createMaterialTopTabNavigator();
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -63,6 +65,8 @@ function App(): React.JSX.Element {
             <Tab.Screen name="Destinations" component={Destinations} />
             <Tab.Screen name="About" component={About} />
             <Tab.Screen name="Contact" component={Contact} />
+            <Tab.Screen name="Login" component={Login} />
+            {isLoggedIn && <Tab.Screen name="PostCreate" component={CreateArticle} />}
           </Tab.Navigator>
         </NavigationContainer>
       </View>
